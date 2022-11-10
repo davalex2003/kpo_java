@@ -22,6 +22,15 @@ public class Main {
             } else {
                 FizzBuzz(number);
             }
+        } else if (program == 1) {
+            System.out.println("Вы выбрали функцию Fibonacci");
+            System.out.print("Введите натуральное число: ");
+            int number = in.nextInt();
+            if (number < 1) {
+                System.out.println("Не натуральное число(");
+            } else {
+                Fibonacci(number);
+            }
         }
     }
 
@@ -39,4 +48,24 @@ public class Main {
         }
         System.out.println("Это была функция FizzBuzz, спасибо за внимание");
     }
+
+    static void Fibonacci(int number) {
+        int first = 0, second = 1;
+        if (number == 1) {
+            System.out.println("0");
+        } else if (number == 2) {
+            System.out.println("0 1");
+        } else {
+            System.out.print("0 1 ");
+            for (int i = 2; i < number; i++) {
+                int third = first + second;
+                System.out.printf("%d ", third);
+                first = second;
+                second = third;
+            }
+        }
+        System.out.println("");
+        System.out.println("Это была функция чисел Фибоначчи, спасибо за внимание");
+    }
+}
 }
