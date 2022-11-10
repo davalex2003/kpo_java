@@ -1,9 +1,8 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
+    public static final String CONSONANTS_LETTERS = "bcdfghijklmnpqrstvwxz";
+    public static final String VOWELS_LETTERS = "aeiou";
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         System.out.println("Какую функцию вы хотите проверить?");
@@ -15,52 +14,77 @@ public class Main {
         System.out.print("Введите число: ");
         int program = in.nextInt();
         if (program == 0) {
-            System.out.println("Вы выбрали функцию FizzBuzz");
-            System.out.print("Введите натуральное число: ");
-            int number = in.nextInt();
-            if (number < 1) {
-                System.out.println("Не натуральное число(");
-            } else {
-                FizzBuzz(number);
-            }
+            ChooseFizzBuzz();
         } else if (program == 1) {
-            System.out.println("Вы выбрали функцию Fibonacci");
-            System.out.print("Введите натуральное число: ");
-            int number = in.nextInt();
-            if (number < 1) {
-                System.out.println("Не натуральное число(");
-            } else {
-                Fibonacci(number);
-            }
+            ChooseFibonacci();
         } else if (program == 2) {
-            System.out.println("Вы выбрали функцию Factorial");
-            System.out.print("Введите неотрицательное число: ");
-            int number = in.nextInt();
-            if (number < 0) {
-                System.out.println("Отрицательное число(");
-            } else {
-                Factorial(number);
-            }
+            ChooseFactorial();
         } else if (program == 3) {
-            System.out.println("Вы выбрали функцию BubbleSort");
-            System.out.print("Введите неотрицательное число - размер массива, он будет сгенерирован автоматически: ");
-            int number = in.nextInt();
-            if (number < 0) {
-                System.out.println("Отрицательное число(");
-            } else {
-                BubbleSort(number);
-            }
+            ChooseBubbleSort();
         } else if (program == 4) {
-            System.out.println("Вы выбрали функцию подсчёта гласных и согласных английских букв в строке");
-            System.out.println("Введите строку: ");
-            String string = in.next();
-            VowelsConsonants(string);
+            ChooseVowelsConsonants();
         } else {
             System.out.println("Нет такой функции(");
         }
     }
 
-    static void FizzBuzz(int number) {
+    private static void ChooseFizzBuzz() {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Вы выбрали функцию FizzBuzz");
+        System.out.print("Введите натуральное число: ");
+        int number = in.nextInt();
+        if (number < 1) {
+            System.out.println("Не натуральное число(");
+        } else {
+            FizzBuzz(number);
+        }
+    }
+
+    private static void ChooseFibonacci() {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Вы выбрали функцию Fibonacci");
+        System.out.print("Введите натуральное число: ");
+        int number = in.nextInt();
+        if (number < 1) {
+            System.out.println("Не натуральное число(");
+        } else {
+            Fibonacci(number);
+        }
+    }
+
+    private static void ChooseFactorial() {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Вы выбрали функцию Factorial");
+        System.out.print("Введите неотрицательное число: ");
+        int number = in.nextInt();
+        if (number < 0) {
+            System.out.println("Отрицательное число(");
+        } else {
+            Factorial(number);
+        }
+    }
+
+    private static void ChooseBubbleSort() {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Вы выбрали функцию BubbleSort");
+        System.out.print("Введите неотрицательное число - размер массива, он будет сгенерирован автоматически: ");
+        int number = in.nextInt();
+        if (number < 0) {
+            System.out.println("Отрицательное число(");
+        } else {
+            BubbleSort(number);
+        }
+    }
+
+    private static void ChooseVowelsConsonants() {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Вы выбрали функцию подсчёта гласных и согласных английских букв в строке");
+        System.out.println("Введите строку: ");
+        String string = in.next();
+        VowelsConsonants(string);
+    }
+
+    private static void FizzBuzz(int number) {
         for (int i = 1; i <= number; i++) {
             if (i % 3 == 0 && i % 5 == 0) {
                 System.out.println("FizzBuzz");
@@ -75,7 +99,7 @@ public class Main {
         System.out.println("Это была функция FizzBuzz, спасибо за внимание");
     }
 
-    static void Fibonacci(int number) {
+    private static void Fibonacci(int number) {
         int first = 0, second = 1;
         if (number == 1) {
             System.out.println("0");
@@ -94,7 +118,7 @@ public class Main {
         System.out.println("Это была функция чисел Фибоначчи, спасибо за внимание");
     }
 
-    static void Factorial(int number) {
+    private static void Factorial(int number) {
         int factorial = 1;
         for (int i = 1; i <= number; i++) {
             factorial *= i;
@@ -103,7 +127,7 @@ public class Main {
         System.out.println("Это была функция вычисления факториала, спасибо за внимание");
     }
 
-    static void BubbleSort(int number) {
+    private static void BubbleSort(int number) {
         int[] array = new int[number];
         System.out.println("Сгенерированный массив размера " + number + ":");
         for (int i = 0; i < number; i++) {
@@ -129,26 +153,16 @@ public class Main {
         System.out.println("Это была функция BubbleSort, спасибо за внимание");
     }
 
-    static void VowelsConsonants(String string) {
-        int consonants_counter = 0, vowels_counter = 0;
-        String[] consonants = new String[]{"b", "c", "d", "f", "g", "h", "i",
-                "j", "k", "l", "m", "n", "p", "q",
-                "r", "s", "t", "v", "w", "x", "z",
-                "B", "C", "D", "F", "G", "H", "I",
-                "J", "K", "L", "M", "N", "P", "Q",
-                "R", "S", "T", "V", "W", "X", "Z"};
-        String[] vowels = new String[]{"a", "e", "i", "o", "u", "A", "E", "I", "O", "U"};
-        List<String> consonants_list = new ArrayList<>(Arrays.asList(consonants));
-        List<String> vowels_list = new ArrayList<>(Arrays.asList(vowels));
-        char[] string_1 = string.toCharArray();
-        for (char letter : string_1) {
-            if (consonants_list.contains(Character.toString(letter))) {
-                consonants_counter++;
-            } else if (vowels_list.contains(Character.toString(letter))) {
-                vowels_counter++;
+    private static void VowelsConsonants(String string) {
+        int consonantsCounter = 0, vowelsCounter = 0;
+        for (char letter : string.toLowerCase().toCharArray()) {
+            if (CONSONANTS_LETTERS.indexOf(letter) != -1) {
+                consonantsCounter++;
+            } else if (VOWELS_LETTERS.indexOf(letter) != -1) {
+                vowelsCounter++;
             }
         }
-        System.out.printf("В строке %d гласных и %d согласных\n", vowels_counter, consonants_counter);
+        System.out.printf("В строке %d гласных и %d согласных\n", vowelsCounter, consonantsCounter);
         System.out.println("Это была функция VowelsConsonants, спасибо за внимание");
     }
 }
