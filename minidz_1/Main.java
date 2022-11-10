@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -11,9 +14,7 @@ public class Main {
         System.out.println("4 - Подсчёт гласных и согласных");
         System.out.print("Введите число: ");
         int program = in.nextInt();
-        if (program < 0 || program > 4) {
-            System.out.println("Нет такой функции(");
-        } else if (program == 0) {
+        if (program == 0) {
             System.out.println("Вы выбрали функцию FizzBuzz");
             System.out.print("Введите натуральное число: ");
             int number = in.nextInt();
@@ -49,6 +50,13 @@ public class Main {
             } else {
                 BubbleSort(number);
             }
+        } else if (program == 4) {
+            System.out.println("Вы выбрали функцию подсчёта гласных и согласных английских букв в строке");
+            System.out.println("Введите строку: ");
+            String string = in.next();
+            VowelsConsonants(string);
+        } else {
+            System.out.println("Нет такой функции(");
         }
     }
 
@@ -119,5 +127,28 @@ public class Main {
         }
         System.out.println();
         System.out.println("Это была функция BubbleSort, спасибо за внимание");
+    }
+
+    static void VowelsConsonants(String string) {
+        int consonants_counter = 0, vowels_counter = 0;
+        String[] consonants = new String[]{"b", "c", "d", "f", "g", "h", "i",
+                "j", "k", "l", "m", "n", "p", "q",
+                "r", "s", "t", "v", "w", "x", "z",
+                "B", "C", "D", "F", "G", "H", "I",
+                "J", "K", "L", "M", "N", "P", "Q",
+                "R", "S", "T", "V", "W", "X", "Z"};
+        String[] vowels = new String[]{"a", "e", "i", "o", "u", "A", "E", "I", "O", "U"};
+        List<String> consonants_list = new ArrayList<>(Arrays.asList(consonants));
+        List<String> vowels_list = new ArrayList<>(Arrays.asList(vowels));
+        char[] string_1 = string.toCharArray();
+        for (char letter : string_1) {
+            if (consonants_list.contains(Character.toString(letter))) {
+                consonants_counter++;
+            } else if (vowels_list.contains(Character.toString(letter))) {
+                vowels_counter++;
+            }
+        }
+        System.out.printf("В строке %d гласных и %d согласных\n", vowels_counter, consonants_counter);
+        System.out.println("Это была функция VowelsConsonants, спасибо за внимание");
     }
 }
