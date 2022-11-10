@@ -31,6 +31,24 @@ public class Main {
             } else {
                 Fibonacci(number);
             }
+        } else if (program == 2) {
+            System.out.println("Вы выбрали функцию Factorial");
+            System.out.print("Введите неотрицательное число: ");
+            int number = in.nextInt();
+            if (number < 0) {
+                System.out.println("Отрицательное число(");
+            } else {
+                Factorial(number);
+            }
+        } else if (program == 3) {
+            System.out.println("Вы выбрали функцию BubbleSort");
+            System.out.print("Введите неотрицательное число - размер массива, он будет сгенерирован автоматически: ");
+            int number = in.nextInt();
+            if (number < 0) {
+                System.out.println("Отрицательное число(");
+            } else {
+                BubbleSort(number);
+            }
         }
     }
 
@@ -64,8 +82,42 @@ public class Main {
                 second = third;
             }
         }
-        System.out.println("");
+        System.out.println();
         System.out.println("Это была функция чисел Фибоначчи, спасибо за внимание");
     }
-}
+
+    static void Factorial(int number) {
+        int factorial = 1;
+        for (int i = 1; i <= number; i++) {
+            factorial *= i;
+        }
+        System.out.printf("Факториал %d - это %d\n", number, factorial);
+        System.out.println("Это была функция вычисления факториала, спасибо за внимание");
+    }
+
+    static void BubbleSort(int number) {
+        int[] array = new int[number];
+        System.out.println("Сгенерированный массив размера " + number + ":");
+        for (int i = 0; i < number; i++) {
+            array[i] = (int) (Math.random() * (201)) - 100;
+            System.out.print(array[i] + " ");
+        }
+        System.out.println();
+        int k;
+        for (int i = 0; i < number - 1; i++) {
+            for (int j = i + 1; j < number; j++) {
+                if (array[i] > array[j]) {
+                    k = array[i];
+                    array[i] = array[j];
+                    array[j] = k;
+                }
+            }
+        }
+        System.out.println("Отсортированный массив:");
+        for (int i = 0; i < number; i++) {
+            System.out.print(array[i] + " ");
+        }
+        System.out.println();
+        System.out.println("Это была функция BubbleSort, спасибо за внимание");
+    }
 }
