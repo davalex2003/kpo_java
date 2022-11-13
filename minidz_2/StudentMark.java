@@ -2,8 +2,7 @@ public class StudentMark {
     int id;
     String name;
     int mark = -1;
-    int question = 0;
-    boolean alreadyAnswered = false;
+    int alreadyAnswered = 0;
     public StudentMark(int id, String name) {
         this.id = id;
         this.name = name;
