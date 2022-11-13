@@ -134,6 +134,8 @@ public class Main {
             if (LIST_OF_STUDENTS_MARKS[i].alreadyAnswered == 2) {
                 System.out.println(LIST_OF_STUDENTS_MARKS[i].name + " : " + LIST_OF_STUDENTS_MARKS[i].mark);
                 someonePresent = true;
+            } else if (LIST_OF_STUDENTS_MARKS[i].alreadyAnswered == 1) {
+                System.out.println(LIST_OF_STUDENTS_MARKS[i].name + " отсутствует на паре");
             }
         }
         if (!someonePresent) {
@@ -165,4 +167,3 @@ public class Main {
         }
     }
 }
-
