@@ -1,2 +1,2 @@
-#kpo_java/minidz_2
+#kpo_java/minidz_2#
 Выполнение первого семинарского ДЗ
